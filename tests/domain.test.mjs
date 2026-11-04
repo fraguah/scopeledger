@@ -1,0 +1,16 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {receiptState,escapeHTML,validateAgreement,finalDecision,deploymentAddress} from '../src/domain.js';
+test('accepted is not finalized',()=>assert.equal(receiptState({statusName:'ACCEPTED',txExecutionResultName:'FINISHED_WITH_RETURN'}).success,false));
+test('finality without execution result is not success',()=>assert.equal(receiptState({statusName:'FINALIZED'}).success,false));
+test('nonfinal leader error retains pending tracking',()=>assert.equal(receiptState({statusName:'PROPOSING',consensus_data:{leader_receipt:[{execution_result:'ERROR'}]}}).failed,false));
+test('finalized execution error is failure',()=>assert.deepEqual(receiptState({statusName:'FINALIZED',consensus_data:{leader_receipt:[{execution_result:'ERROR'}]}}),{status:'FINALIZED',execution:'ERROR',success:false,failed:true}));
+test('Studionet successful receipt',()=>assert.equal(receiptState({status:7,consensus_data:{leader_receipt:[{execution_result:'SUCCESS'}]}}).success,true));
+test('leader execution wins over a trailing idle validator error',()=>assert.equal(receiptState({statusName:'FINALIZED',consensus_data:{leader_receipt:[{mode:'leader',execution_result:'SUCCESS'},{mode:'validator',vote:'idle',execution_result:'ERROR'}]}}).success,true));
+test('failed leader is not hidden by a successful validator receipt',()=>assert.equal(receiptState({statusName:'FINALIZED',consensus_data:{leader_receipt:[{mode:'leader',execution_result:'ERROR'},{mode:'validator',execution_result:'SUCCESS'}]}}).failed,true));
+test('terminal network failures',()=>{for(const status of ['CANCELED','UNDETERMINED'])assert.equal(receiptState({status}).failed,true);});
+test('escape untrusted text',()=>assert.equal(escapeHTML('<img onerror="x">&\''),'&lt;img onerror=&quot;x&quot;&gt;&amp;&#39;'));
+test('conflicting reviews require clarification',()=>assert.equal(finalDecision([{label:'IN_SCOPE'},{label:'CHANGE_ORDER'}]),'NEEDS_CLARIFICATION'));
+test('reject duplicate trimmed clauses',()=>assert.throws(()=>validateAgreement({title:'Demo',counterparty:'0x'+'1'.repeat(40),clauses:['Build five pages',' Build five pages ']}),/different/));
+test('reject zero counterparty',()=>assert.throws(()=>validateAgreement({title:'Demo',counterparty:'0x'+'0'.repeat(40),clauses:['Build five pages']}),/nonzero/));
+test('recognize decoded deployment address',()=>assert.equal(deploymentAddress({txDataDecoded:{contractAddress:'0xabc'}}),'0xabc'));

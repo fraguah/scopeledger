@@ -1,0 +1,8 @@
+node_modules/
+public/source.zip
+dist/
+.site-workflow/
+.env*
+__pycache__/
+.pytest_cache/
+*.log
