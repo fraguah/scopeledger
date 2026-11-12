@@ -90,3 +90,22 @@ class ContractTests(unittest.TestCase):
         rid=self.request();self.run_review(self.result());answers=iter([self.result(),self.result('NEEDS_CLARIFICATION')]);gl.nondet.exec_prompt=lambda *a,**k:next(answers)
         with self.assertRaises(UserError):self.c.review_request(rid)
         self.assertEqual(json.loads(self.c.get_request(rid))['reviews'],[])
+
+    def test_alternate_valid_basis_no_longer_blocks_same_classification(self):
+        rid=self.request(); self.run_review(self.result())
+        alternate={**self.result(), 'basis_ids':[], 'scope_quote':''}
+        self.assertNotEqual(self.result()['basis_ids'], alternate['basis_ids'])
+        answers=iter([self.result(),alternate,{'supported':True}])
+        gl.nondet.exec_prompt=lambda *a,**k:next(answers)
+        self.c.review_request(rid)
+        self.assertEqual(json.loads(self.c.get_request(rid))['decision'],'CHANGE_ORDER')
+        self.assertEqual(json.loads(self.c.get_request(rid))['reviews'][0]['scope_quote'],'Payments are excluded.')
+    def test_same_label_different_basis_needs_supported_evidence(self):
+        alternate={**self.result(),'basis_ids':[], 'scope_quote':''}
+        for answer in ({'supported':False},{'supported':'true'},{'supported':True,'extra':1},None):
+            gl.nondet.exec_prompt=lambda *a,**k:answer
+            self.assertFalse(mod.compatible_decisions(self.result(),alternate,self.clauses,'Payments are excluded.','Add a payment checkout page.'))
+    def test_alternate_basis_does_not_allow_fabricated_quotes(self):
+        bad={**self.result(),'scope_quote':'Made up evidence'}
+        with self.assertRaises(UserError):
+            mod.compatible_decisions(bad,{**self.result(),'basis_ids':[],'scope_quote':''},self.clauses,'Payments are excluded.','Add a payment checkout page.')

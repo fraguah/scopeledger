@@ -14,20 +14,17 @@ Website: https://scopeledger-fraguah.pipedcoconut.chatgpt.site
 
 GitHub: https://github.com/fraguah/scopeledger
 
-## How-to
+The site is public and currently serves site version 3. Site version 4 contains the guided release and is saved pending publication. The Studionet record is already public and its [second review receipt](https://explorer-studio.genlayer.com/transactions/0x67311a93bfe5e32574a1f9386dc79522907b2d35cbd545a83ae11b4807874e4b) can be opened without a wallet now.
 
-1. Inspect an existing record: Open live workspace; inspect the verified deployment's agreement 1 and request 1. Review details show a stored classification and exact scope quotation. These are distinct from the separately labeled illustrative workspace.
-2. Try the full flow: Network & source → Deploy new sandbox. New agreement → enter title, scope clauses and exclusions; the app suggests the other temporary actor as counterparty. Propose exact terms.
-3. Accept bilaterally: Switch actor → Accept exact terms. Wait for STATE VERIFIED and ACTIVE.
-4. Review a change: New request → describe added work → Record request. After STATE VERIFIED, Run consensus review. Wait for finalized execution and the stored verdict/citation.
-5. Inspect history: Activity & receipts → inspect Explorer links or Export history. If tracking times out, Resume tracking keeps the original transaction hash. For a second review switch to the other actor. Amendments require another bilateral acceptance.
+## How to review the guided release
+
+After version 4 is published, open the [public decision for agreement 1, request 1](https://scopeledger-fraguah.pipedcoconut.chatgpt.site/#record?contract=0x18Aebb92EF49d186665e77CCFEefA33E58E51B06&agreement=1&request=1). No wallet is required. The same record opens from **See a real decision** on the home page. It shows the accepted terms, the change request, both recorded reviews and their exact quotations.
+
+To try the workflow, select **Try your own example** and follow **Terms → Accept → Request → Decision**. The walkthrough provides editable templates, switches between two temporary test identities and can resume a saved transaction by its existing hash. Use public test data. The **Advanced workspace** provides amendments, transaction history and receipt export.
 
 Expected verification outcome (under 500 characters):
 A freshly deployed ScopeLedger address returns protocol scopeledger/1. A proposed agreement becomes ACTIVE only after the named counterparty accepts its terms hash. A recorded request receives a stored classification, exact quote and baseline hash after finalized successful consensus execution. Activity includes the submitted hash and State verified. The supplied live example should show CHANGE_ORDER for checkout/payments excluded from the accepted scope.
 
-## Before submission
+## Evidence for the reviewer
 
-- Complete actual network evidence in VALIDATION.md.
-- The website and repository currently remain private; stewards need public review access before submission.
-- No project submission has been sent. The form requires GitHub Repository evidence and a new CAPTCHA confirmation at action time.
-- Do not claim accepted points, legal enforceability, production safety or guaranteed semantic correctness.
+The six transactions for the guided example are listed in [VALIDATION.md](VALIDATION.md) with the source fingerprint and the other 12 historical receipts. Both reviews returned `CHANGE_ORDER`. The two recorded rounds used different clause references. Whether validators used the new evidence check during either vote remains unverified on Studionet. The alternate-evidence path is covered by mocked contract tests.
