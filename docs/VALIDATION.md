@@ -82,3 +82,10 @@ The first attempt used a separate contract at `0x424EEbFa2e5988Fb871D56460BF80F8
 | Create agreement | `0x20663fd58f1cd4b68fdf13bc079d10f48f99ad2ecf0c375cae00e5b58453df64` |
 
 Release contract source SHA-256: `024ea26709215a7f2b3de2d417f33670930843959e8d7447391e6d995bad4ddc`. Both 0.2 deployments returned identical source bytes. Receipt success confirms both reviews ran on the revised contract. The alternate-evidence branch has mocked regression coverage. Its use during live validator voting remains unverified.
+
+## Public deployment verification
+
+- Published Sites version **5** with deployment ID `appgdep_6af62e7b2a788191abc5a921ca90db66`.
+- Built the published files from GitHub `main` at `09d3d0e2e75310a3aae72657e80b4acea8739ea6`. Sites recorded source commit `f780b8438442f017f3410040b1f0c58f38b5af43`, which imports that commit and retains the existing hosting manifest. The packaged HTML and ZIP matched the tested `dist` files byte for byte.
+- Downloaded the live `index.html` and `source.zip` and compared their bytes with `dist`. Both matched. The live ZIP contains the updated `docs/SUBMISSION.md` with the exact reviewer URL on a line by itself.
+- Opened the [reviewer record](https://scopeledger-fraguah.pipedcoconut.chatgpt.site/#record?contract=0x18Aebb92EF49d186665e77CCFEefA33E58E51B06&agreement=1&request=1) in a fresh tab without a signing session. The page showed the accepted terms and exclusions, the checkout request, both recorded `CHANGE_ORDER` reviews and their exact quotations. It reported that the input fingerprints and quoted text were checked against finalized Studionet state. The expanded record identifiers showed the terms fingerprint `31ae41aea517d6e46f4923dd5a49b7e0a8496b9bea46b2c0d8ceba79176b7f41`. The verification was read-only.
