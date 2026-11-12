@@ -49,7 +49,7 @@ An independent read of the 18 transaction hashes below and in the historical sec
 
 Local checks: 31 passing tests (18 JavaScript, 13 mocked contract). GenVM lint (3 checks) and semantic validation passed with all 10 public methods. Production build passed. Regression cases cover matching labels with alternate valid citations, unsupported evidence, malformed evidence-check answers, fabricated quotes, permalink validation, original-input fingerprints and conflicting review histories. Mock tests do not measure real validator agreement rates.
 
-Browser checks on the managed preview of the release build covered the landing page, a historical record with both finalized reviews and verified fingerprints, draft recovery after reload, and recovery after closing the original signing tab. A deliberate reload interrupted sandbox deployment tracking. Resumption tracked the same hash. The public site still serves site version 3. Site version 4 is saved and awaits publication.
+Browser checks on the managed preview of the release build covered the landing page, a historical record with both finalized reviews and verified fingerprints, draft recovery after reload, and recovery after closing the original signing tab. A deliberate reload interrupted sandbox deployment tracking. Resumption tracked the same hash.
 
 The deployment in the earlier section is historical and was not upgraded. New walkthroughs deploy the revised contract policy `independent-label-evidence/2`. The additional semantic check is only used when independently derived labels agree but their basis IDs differ. Its effect on latency and consensus success has not been benchmarked.
 
@@ -70,7 +70,7 @@ First consensus review `0x160babd04b09a511585da67a3fd622df5123ce327cdad695fddde2
 
 Second review `0x67311a93bfe5e32574a1f9386dc79522907b2d35cbd545a83ae11b4807874e4b` reached FINALIZED/SUCCESS after another page reload and same-hash resumption. State verification confirmed the other test party requested round 2. Both rounds classify CHANGE_ORDER; round 1 cites `[0]` and the exclusion, round 2 cites `[0,1]` and the exact five-page clause. Both are displayed, not overwritten. Different bases across two rounds are not proof of a per-validator basis mismatch.
 
-The record permalink opened in a separate preview tab without a signing session and displayed both reviews with verified fingerprints. Copy link exposes a selectable URL as a fallback. Advanced workspace and return to the walkthrough were checked. The [reviewer permalink on the public site](https://scopeledger-fraguah.pipedcoconut.chatgpt.site/#record?contract=0x18Aebb92EF49d186665e77CCFEefA33E58E51B06&agreement=1&request=1) requires publication of the guided release.
+The record permalink opened in a separate preview tab without a signing session and displayed both reviews with verified fingerprints. Copy link exposes a selectable URL as a fallback. Advanced workspace and return to the walkthrough were checked. [SUBMISSION.md](SUBMISSION.md) contains the direct reviewer link.
 
 ### First 0.2 sandbox
 

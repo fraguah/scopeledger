@@ -14,11 +14,15 @@ Website: https://scopeledger-fraguah.pipedcoconut.chatgpt.site
 
 GitHub: https://github.com/fraguah/scopeledger
 
-The site is public and currently serves site version 3. Site version 4 contains the guided release and is saved pending publication. The Studionet record is already public and its [second review receipt](https://explorer-studio.genlayer.com/transactions/0x67311a93bfe5e32574a1f9386dc79522907b2d35cbd545a83ae11b4807874e4b) can be opened without a wallet now.
+The Studionet record and its [second review receipt](https://explorer-studio.genlayer.com/transactions/0x67311a93bfe5e32574a1f9386dc79522907b2d35cbd545a83ae11b4807874e4b) are public.
 
 ## How to review the guided release
 
-After version 4 is published, open the [public decision for agreement 1, request 1](https://scopeledger-fraguah.pipedcoconut.chatgpt.site/#record?contract=0x18Aebb92EF49d186665e77CCFEefA33E58E51B06&agreement=1&request=1). No wallet is required. The same record opens from **See a real decision** on the home page. It shows the accepted terms, the change request, both recorded reviews and their exact quotations.
+Direct link to agreement 1, request 1. No wallet is required.
+
+https://scopeledger-fraguah.pipedcoconut.chatgpt.site/#record?contract=0x18Aebb92EF49d186665e77CCFEefA33E58E51B06&agreement=1&request=1
+
+The guided home page opens the same record from **See a real decision**. The record shows the accepted terms, the change request, both reviews and their exact quotations.
 
 To try the workflow, select **Try your own example** and follow **Terms → Accept → Request → Decision**. The walkthrough provides editable templates, switches between two temporary test identities and can resume a saved transaction by its existing hash. Use public test data. The **Advanced workspace** provides amendments, transaction history and receipt export.
 

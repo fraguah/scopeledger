@@ -17,7 +17,7 @@ npx vite --host 0.0.0.0
 
 ## Guided release 0.2
 
-The public site currently serves site version 3. The guided release is saved as site version 4 and awaits publication. See [SUBMISSION.md](docs/SUBMISSION.md) for the reviewer link and the available Studionet receipt.
+See [SUBMISSION.md](docs/SUBMISSION.md) for the public record link and its Studionet receipt.
 
 Open **See a real decision** to read an actual finalized record, its original terms, both reviews and exact citations. No wallet or signing identity is needed. **Try your own example** opens a four-step walkthrough: terms → acceptance → request → decision. Website, design and development templates are editable; drafts save locally. The browser switches between two temporary test identities for you.
 
